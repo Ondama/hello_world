@@ -13,10 +13,12 @@ const JQ_ARGUMENT: &'static str = ".items[0].url + .items[0].sizes[\"2048\"]";
 
 fn main() {
     let mut image_path = env::var("HOME").expect("no se pudo leer");
+
     image_path.push_str(IMAGE_FOLDER);
     if !Path::new(&image_path).exists() {
         fs::create_dir(image_path.to_string()).expect("error creando el directorio"); 
     }
+
     image_path.push_str(IMAGE_PATH);
     let owned_image_path = image_path.to_string();
     download_image(&owned_image_path);
