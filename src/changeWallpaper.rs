@@ -15,6 +15,7 @@ fn main() {
     let mut image_path = env::var("HOME").expect("no se pudo leer");
 
     image_path.push_str(IMAGE_FOLDER);
+
     if !Path::new(&image_path).exists() {
         fs::create_dir(image_path.to_string()).expect("error creando el directorio"); 
     }
@@ -23,7 +24,7 @@ fn main() {
     let owned_image_path = image_path.to_string();
     download_image(&owned_image_path);
     println!("guardar en {}", image_path);
-    
+
     Command::new("gsettings")
             .arg("set")
             .arg("org.gnome.desktop.background")
